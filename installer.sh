@@ -30,46 +30,6 @@ function _remove_legacy_files() {
     rm -rf /usr/lib/udev/rules.d/99-clash.rules
 }
 
-function _install_clash_premium() {
-    echo "Clash unavailable in \$PATH."
-    echo "Downloading form Github[https://github.com/Dreamacro/clash/releases/tag/premium]."
-    
-    enforce_command "wget"
-    enforce_command "jq"
-    enforce_command "grep"
-    enforce_command "xargs"
-    enforce_command "gzip"
-    enforce_directory "/usr/bin"
-    
-    case "$(uname -m)" in
-        "x86_64") arch="amd64";;
-        "i386") arch="386";;
-        "i686") arch="386";;
-        "arm64") arch="armv8";;
-        "aarch64") arch="armv8";;
-        "armhf") arch="armv7";;
-        *) echo "Unknown architecture: $(uname -m)" && exit 1 ;;
-    esac
-    
-    download_file_name=$(wget -O - "https://api.github.com/repos/Dreamacro/clash/releases/tags/premium" 2> /dev/null | jq ".assets[].name" | grep -m 1 "linux-$arch" | xargs)
-    if [[ -z "$download_file_name" ]]; then
-        echo -n "Unable to list clash files."
-        exit 1
-    fi
-    
-    echo "Filename: $download_file_name"
-    
-    tmp_dir="/tmp/clash_premium_installer"
-    
-    assert mkdir -p "$tmp_dir"
-    
-    assert wget "https://github.com/Dreamacro/clash/releases/download/premium/$download_file_name" -O "$tmp_dir/clash_premium.gz"
-    
-    assert gzip -d -f "$tmp_dir/clash_premium.gz"
-    
-    assert install -m 0755 "$tmp_dir/clash_premium" /usr/bin/clash
-}
-
 function _install() {
     enforce_command install
     enforce_command nft
@@ -83,10 +43,6 @@ function _install() {
         exit 1
     fi
     
-    if ! which clash ;then
-        _install_clash_premium
-    fi
-
     _remove_legacy_files
 
     systemctl disable --now clash

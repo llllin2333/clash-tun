@@ -25,6 +25,7 @@ $ cd clash-tun
 
 3. 配置设置
 ```bash
+解压archive.zip里的clash
 $ sudo mkdir /srv/clash/
 $ sudo mv config.yaml Country.mmdb /srv/clash/
 $ sudo mv clash /usr/bin/
@@ -44,4 +45,4 @@ $ sudo systemctl start clash
 $ sudo systemctl status clash
 ```
 如果状态是active，就说明我们就已经成功设置了Clash的Tun模式，所有流量都会经过Clash，从而达到了全局代理的功能。
-
+配置文件在/srv/clash，自行修改

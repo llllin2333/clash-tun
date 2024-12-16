@@ -19,7 +19,7 @@ nftables v1.0.2 (Lester Gooch)
 
 2. 克隆此项目
 ```bash
-$ git clone https://github.com/blue7wings/clash-tun
+$ git clone https://github.com/llllin2333/clash-tun
 $ cd clash-tun
 ```
 

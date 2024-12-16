@@ -33,6 +33,7 @@ $ sudo mv clash /usr/bin/
 4. 开始安装
 ```bash
 $ sudo ./installer.sh install
+如果提示权限不足请将权限改为777
 ```
 
 5. 启动

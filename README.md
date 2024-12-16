@@ -48,7 +48,7 @@ $ sudo systemctl status clash
 使用ping google.com 和 curl google.com 进行测试
 配置文件在/srv/clash，自行修改但请保留tun模式的那一段
 
-如果curl出现问题，请检查防火墙设置
+如果curl出现问题，请检查防火墙设置\n
 sudo ufw status	查看防火墙状态，active是开启状态，inactive是关闭状态
 sudo ufw disable	关闭防火墙
 sudo ufw enable	开启防火墙

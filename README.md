@@ -47,9 +47,10 @@ $ sudo systemctl status clash
 ```
 如果状态是active，就说明我们就已经成功设置了Clash的Tun模式，所有流量都会经过Clash，从而达到了全局代理的功能。
 
-使用ping google.com 和 curl google.com 进行测试
+配置文件在/srv/clash，自行修改proxies之后的内容，或者粘贴复制你自己的clash可用的配置文件并增加tun模式的那一段代码
+![image](https://github.com/user-attachments/assets/cd78f56d-82db-4064-ad41-297b6018682c)
 
-配置文件在/srv/clash，自行修改但请保留tun模式的那一段
+使用ping google.com 和 curl google.com 进行测试
 
 如果curl出现问题，请检查防火墙设置
 
